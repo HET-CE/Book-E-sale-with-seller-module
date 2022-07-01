@@ -8,6 +8,24 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/keys");
 const requireLogin = require("../middleware/requireLogin");
 
+router.post("/getaddress", (req, res) => {
+  const { _id } = req.body;
+  if (!_id) {
+    return res.status(422).json({ error: "Not able to find address" });
+  }
+  User.findOne({ _id: _id }).then((savedUser) => {
+    if (!savedUser) {
+      return res.status(422).json({ error: "Not able to find your address" });
+    }
+    return res.json({
+      email: savedUser.email,
+      firstName: savedUser.firstName,
+      lastName: savedUser.lastName,
+      address: savedUser.address,
+    });
+  });
+});
+
 router.post("/signup", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
   if (!email || !password || !firstName || !lastName) {

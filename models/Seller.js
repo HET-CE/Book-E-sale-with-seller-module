@@ -25,6 +25,10 @@ const sellerSchema = new mongoose.Schema({
         required: true,
         default: 1,
       },
+      firstName: String,
+      lastName: String,
+      email: String,
+      address: String,
     },
   ],
   password: {
