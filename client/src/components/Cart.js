@@ -108,7 +108,7 @@ const Cart = ({
               Sign In Seller
             </button>
           </Link>
-          <Link exact to="/order">
+         <Link exact to={localStorage.getItem("seller") ? "/order" : "/"}>
             <button className="btn waves-effect waves-light #64b5f6 black darken-1">
               Home Page
             </button>
