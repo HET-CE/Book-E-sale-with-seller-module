@@ -52,13 +52,13 @@ const SignUpSeller = () => {
         <h4> Seller SignUp </h4>
         <input
           type="text"
-          placeholder="Seller First Name"
+          placeholder="Your City"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Seller Last Name"
+          placeholder="Your State"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />

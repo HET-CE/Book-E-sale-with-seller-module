@@ -24,6 +24,29 @@ const Order = () => {
       });
   }, []);
 
+  const acceptOrder = (id) => {
+    let order = data.filter((bookOrder) => {
+      return bookOrder._id == id;
+    });
+    let currseller = JSON.parse(localStorage.getItem("seller"));
+    let _id = currseller._id;
+    axios
+      .put("/selectorder", {
+        _id: _id,
+        order: order,
+      })
+      .then(function (response) {
+        console.log(response.data.order);
+        setData(response.data.order);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        console.log(data);
+      });
+  };
+
   return (
     <>
       <h2 style={{ textAlign: "center" }}>Pending Orders</h2>
@@ -45,7 +68,9 @@ const Order = () => {
                 <h6 style={{ color: "green" }}>20% OFF</h6>
                 <h5 style={{ fontWeight: "bold" }}>{item.price} Rs.</h5>
                 {localStorage.getItem("seller") && (
-                  <button type="submit">Accept Order</button>
+                  <button type="submit" onClick={() => acceptOrder(item._id)}>
+                    Accept Order
+                  </button>
                 )}
               </div>
             </div>

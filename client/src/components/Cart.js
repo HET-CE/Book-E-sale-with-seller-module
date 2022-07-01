@@ -54,6 +54,7 @@ const Cart = ({
           })
           .then(function () {
             // console.log(data);
+            setSellers([]);
           });
       })
       .catch((error) => {

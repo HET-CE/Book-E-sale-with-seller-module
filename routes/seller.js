@@ -54,6 +54,26 @@ router.put("/saveorder", (req, res) => {
   });
 });
 
+router.put("/selectorder", (req, res) => {
+  console.log(req.body);
+  Seller.findByIdAndUpdate(
+    req.body._id,
+    {
+      $pull: { order: req.body.order[0] },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      // console.log("hi" + result);
+      res.json(result);
+    }
+  });
+});
+
 router.post("/signupseller", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
   if (!email || !password || !firstName || !lastName) {
