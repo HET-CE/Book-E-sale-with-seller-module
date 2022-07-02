@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
+import M from "materialize-css";
 
 const Cart = ({
   cart,
@@ -48,13 +49,17 @@ const Cart = ({
           .then(function (response) {
             console.log(response.data.order);
             // setData(response.data.order);
+            setSellers([]);
+            M.toast({
+              html: "Place Order successfully",
+              classes: "#43a047 green darken-1",
+            });
           })
           .catch(function (error) {
             console.log(error);
           })
           .then(function () {
             // console.log(data);
-            setSellers([]);
           });
       })
       .catch((error) => {
@@ -108,7 +113,7 @@ const Cart = ({
               Sign In Seller
             </button>
           </Link>
-         <Link exact to={localStorage.getItem("seller") ? "/order" : "/"}>
+          <Link exact to={localStorage.getItem("seller") ? "/order" : "/"}>
             <button className="btn waves-effect waves-light #64b5f6 black darken-1">
               Home Page
             </button>
@@ -200,7 +205,7 @@ const Cart = ({
                 <div
                   key={seller._id}
                   onClick={() => Order(seller._id)}
-                  className="col s12"
+                  className="Hover col s12"
                   style={{
                     backgroundColor: "lightgrey",
                     borderBottom: "2px solid black",
@@ -227,3 +232,4 @@ const Cart = ({
 };
 
 export default Cart;
+
