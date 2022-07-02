@@ -126,3 +126,7 @@ a {
   height: 60vh;
   /* margin: 10px; */
 }
+.Hover:hover {
+  background-color: #f14d54 !important;
+}
+
