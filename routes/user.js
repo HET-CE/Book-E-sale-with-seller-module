@@ -27,8 +27,8 @@ router.post("/getaddress", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
-  if (!email || !password || !firstName || !lastName) {
+  const { firstName, lastName, email, password, address } = req.body;
+  if (!email || !password || !firstName || !lastName || !address) {
     return res.status(422).json({ error: "please add all the fields" });
   }
   User.findOne({ email: email })
@@ -44,6 +44,7 @@ router.post("/signup", (req, res) => {
           password: hashedpassword,
           firstName,
           lastName,
+          address,
         });
 
         user

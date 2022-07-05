@@ -55,7 +55,7 @@ router.put("/saveorder", (req, res) => {
 });
 
 router.put("/selectorder", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   Seller.findByIdAndUpdate(
     req.body._id,
     {

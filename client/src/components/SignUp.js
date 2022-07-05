@@ -43,7 +43,7 @@ const SignUp = () => {
         }
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   };
 
