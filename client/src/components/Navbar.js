@@ -114,7 +114,7 @@ const Navbar = ({ data, addToCart, user, setUser, seller, setseller }) => {
         <div className="modal-content">
           <input
             type="text"
-            placeholder="search users"
+            placeholder="Search Book"
             value={search}
             onChange={(e) => fetchUsers(e.target.value)}
           />
