@@ -4,12 +4,24 @@ import Cart from "./Cart";
 import axios from "axios";
 import home from "../assets/lotsOfBooks.jpg";
 
-const Home = ({ data, addToCart }) => {
+const Home = ({ data, addToCart, fictionOrNonFictionBooks, AllBooks }) => {
   return (
     <>
       <img src={home} className="homeImage" />
       <hr />
       <h2 style={{ textAlign: "center" }}> Available Books</h2>
+      <div className="categoryButton">
+        <button onClick={() => fictionOrNonFictionBooks("Fiction")}>
+          Fiction
+        </button>
+        <button onClick={() => fictionOrNonFictionBooks("Non-Fiction")}>
+          Non Fiction
+        </button>
+        <button onClick={() => fictionOrNonFictionBooks("Inspiration")}>
+          Inspiration
+        </button>
+        <button onClick={() => AllBooks()}>All Books</button>
+      </div>
       <div className="main-container">
         {data.map((item) => {
           return (
@@ -18,7 +30,7 @@ const Home = ({ data, addToCart }) => {
                 <img src={item.image} alt="default img" />
               </div>
               <div className="content">
-                <h4 style={{ fontWeight: "bold" }}>{item.title}</h4>
+                <h5 style={{ fontWeight: "bold" }}>{item.title}</h5>
                 <h6 style={{ fontWeight: "bold" }}>{item.category}</h6>
                 <p>
                   {item.description.length > 120

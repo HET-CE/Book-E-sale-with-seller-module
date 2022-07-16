@@ -54,6 +54,34 @@ function App() {
       });
   }, []);
 
+  const AllBooks = () => {
+    axios
+      .get("/allbooks")
+      .then(function (response) {
+        // console.log(response.data.books);
+        setData(response.data.books);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        // console.log(data);
+      });
+  };
+  const fictionOrNonFictionBooks = (str) => {
+    axios
+      .get("/allbooks")
+      .then(function (response) {
+        let newData = response.data.books.filter((item) => {
+          return item.category == str;
+        });
+        setData(newData);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   const addToCart = (id) => {
     let Obj = data.filter((item) => {
       return item._id == id;
@@ -159,7 +187,12 @@ function App() {
       />
       <Switch>
         <Route exact path="/">
-          <Home data={data} addToCart={addToCart} />
+          <Home
+            data={data}
+            addToCart={addToCart}
+            fictionOrNonFictionBooks={fictionOrNonFictionBooks}
+            AllBooks={AllBooks}
+          />
         </Route>
         <Route exact path="/cart">
           <Cart
