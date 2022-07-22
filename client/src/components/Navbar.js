@@ -47,7 +47,9 @@ const Navbar = ({ data, addToCart, user, setUser, seller, setseller }) => {
               });
             }}
           >
-            Logout
+            Logout - {user && <span>{user.firstName}</span>}
+            {seller && <span>{seller.firstName}</span>}
+            {/* Logout - {user && { user }} */}
           </button>
         </li>,
       ];

@@ -11,16 +11,27 @@ const Home = ({ data, addToCart, fictionOrNonFictionBooks, AllBooks }) => {
       <hr />
       <h2 style={{ textAlign: "center" }}> Available Books</h2>
       <div className="categoryButton">
-        <button onClick={() => fictionOrNonFictionBooks("Fiction")}>
+        <button
+          style={{ margin: "5px" }}
+          onClick={() => fictionOrNonFictionBooks("Fiction")}
+        >
           Fiction
         </button>
-        <button onClick={() => fictionOrNonFictionBooks("Non-Fiction")}>
+        <button
+          style={{ margin: "5px" }}
+          onClick={() => fictionOrNonFictionBooks("Non-Fiction")}
+        >
           Non Fiction
         </button>
-        <button onClick={() => fictionOrNonFictionBooks("Inspiration")}>
+        <button
+          style={{ margin: "5px" }}
+          onClick={() => fictionOrNonFictionBooks("Inspiration")}
+        >
           Inspiration
         </button>
-        <button onClick={() => AllBooks()}>All Books</button>
+        <button style={{ margin: "5px" }} onClick={() => AllBooks()}>
+          All Books
+        </button>
       </div>
       <div className="main-container">
         {data.map((item) => {
